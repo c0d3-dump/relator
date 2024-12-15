@@ -1,11 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:relator/local_games_screen.dart';
 import 'package:relator/platform_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Permission.notification.request();
+  await Permission.storage.request();
 
   await FlutterDownloader.initialize(
       debug:
